@@ -1,0 +1,13 @@
+{
+  "name": "kata-args",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Victor <victor@redradix.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^27.0.4"
+  }
+}
