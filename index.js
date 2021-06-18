@@ -11,10 +11,10 @@ const parser = (params, schema) => {
   const rule = schema[arg]
   const casted = rule.type(value)
 
-  console.log(casted)
+  const parsedObject = { [arg]: casted }
 
   if (isNaN(casted)) throw new Error()
-  else return true
+  else return parsedObject
 
   // console.log(params, schema)
   // throw new Error('hola')
