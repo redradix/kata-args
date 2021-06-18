@@ -1,17 +1,14 @@
 const parseArgs = args => {
-  if (args.includes('-p') && args.includes('-l')) {
-    return {
-      l: true,
-      p: args.slice(6),
-    }
-  }
+  const parser = {}
+
   if (args.includes('-l')) {
-    return { l: true }
+   parser['l']= true
   }
   if (args.includes('-p')) {
-    return { p: args.slice(3) }
+    auxArgs = args.split(" ")
+    parser['p']=  auxArgs[auxArgs.indexOf("-p") + 1] || ""
   }
-  return {}
+  return parser
 }
 
 module.exports = { parseArgs }
