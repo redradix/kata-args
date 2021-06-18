@@ -50,6 +50,24 @@ const specs = [
     value: '-a andres',
     result: { a: 'andres' }
   },
+  {
+    name: 'Schema with value string "a" + boolean "b"',
+    schema: {
+      a: 'string',
+      b: 'boolean'
+    },
+    value: '-b -a andres',
+    result: { b: true, a: 'andres' }
+  },
+  {
+    name: 'Schema with value number "8000"',
+    schema: {
+      p: 'number',
+    },
+    value: '-p 8000',
+    result: { p: 8000 }
+  },
+
 ]
 
 const error = [
@@ -79,6 +97,14 @@ const error = [
     value: '-a andres -f',
     result: 'Invalid schema type'
   },
+  {
+    name: 'Schema with wrong value number "bananas"',
+    schema: {
+      p: 'number',
+    },
+    value: '-p bananas',
+    result: 'Invalid schema type'
+  },
 ]
 
 /**
@@ -88,7 +114,7 @@ const error = [
 describe('Validate Schema', () => {
   specs.forEach(({name, schema, value, result}) => {
     it(name, () => {
-      expect(parseCommand(schema, value)).toMatchObject(result)
+      expect(parseCommand(schema, value)).toEqual(result)
     })
   });
 

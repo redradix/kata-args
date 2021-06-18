@@ -14,10 +14,18 @@ const parseCommand = (schema, value) => {
         throw new Error('Invalid schema type')
       }
 
-      return  { ...acc, [flag]: true }
+      return { ...acc, [flag]: true }
     } else if (type === 'string') {
       return { ...acc, [flag]: value }
-    }    
+    } else if (type === 'number') {
+      const numberedValue = parseInt(value, 10)
+
+      if (isNaN(numberedValue)) {
+        throw new Error('Invalid schema type')
+      }
+
+      return { ...acc, [flag]: numberedValue }
+    }
   }, {})
 }
 
