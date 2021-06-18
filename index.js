@@ -1,11 +1,17 @@
-const parseArgs = (args) => {
-  if (args.includes("-l")) {
-    return { l: true };
+const parseArgs = args => {
+  if (args.includes('-p') && args.includes('-l')) {
+    return {
+      l: true,
+      p: args.slice(6),
+    }
   }
-  if (args.includes("-p")) {
-    return { p: args.slice(3) };
+  if (args.includes('-l')) {
+    return { l: true }
   }
-  return {};
-};
+  if (args.includes('-p')) {
+    return { p: args.slice(3) }
+  }
+  return {}
+}
 
-module.exports = { parseArgs };
+module.exports = { parseArgs }

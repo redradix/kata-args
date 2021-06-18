@@ -18,7 +18,7 @@ describe('Parser', () => {
     expect(parseArgs('-p')).toEqual({ p: '' })
   })
 
-  it('provides a default value if none is provided', () => {
+  it('parses a flag without value and a flag with a value', () => {
     expect(parseArgs('-l -p 8000')).toEqual({ l: true, p: '8000' })
   })
 })
