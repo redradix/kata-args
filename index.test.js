@@ -65,6 +65,9 @@ describe('Parsing with different schemas', () => {
       p: 'number',
       d: 'boolean',
     })
+
     expect(parser('-d -p 80 -l hola')).toEqual({ d: true, p: 80, l: 'hola' })
+    expect(parser('-d -p -l hola')).toEqual({ d: true, p: 0, l: 'hola' })
+    expect(parser('-d -p 80 -l')).toEqual({ d: true, p: 80, l: '' })
   })
 })
