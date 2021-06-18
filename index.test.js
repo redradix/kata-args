@@ -11,5 +11,6 @@ describe("Parser", () => {
 
   it("parse a single flag with a value", () => {
     expect(parseArgs("-p 4000")).toEqual({ p: "4000" });
+    expect(parseArgs("-p 8000")).toEqual({ p: "8000" });
   });
 });
