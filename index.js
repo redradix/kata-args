@@ -1,4 +1,7 @@
-const parseArgs = () => {
+const parseArgs = (args) => {
+  if(args.includes("-l")){
+    return {l:true}
+  }
   return {}
 }
 

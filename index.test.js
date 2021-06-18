@@ -7,6 +7,6 @@ describe('Parser', () => {
   })
 
   it('parse a single flag', () => {
-    expect(parseArgs('-l').toEqual({l:true}))
+    expect(parseArgs('-l')).toEqual({l:true})
   } )
 })
