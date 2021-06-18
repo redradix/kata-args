@@ -8,25 +8,32 @@ const specs = [
     result: {}
   },
   {
-    name: 'Boolean',
+    name: 'Schema with value boolean "a"',
     schema: {
       a: 'boolean'
     },
     value: '-a',
     result: { a: true }
   },
-  
+  {
+    name: 'Schema with value boolean "b"',
+    schema: {
+      b: 'boolean'
+    },
+    value: '-b',
+    result: { b: true }
+  }
 ]
 
 const error = [
   {
-    name: 'Boolean B',
+    name: 'Schema with wrong boolean',
     schema: {
       a: 'boolean'
     },
     value: '-b',
     result: 'Invalid Parameter'
-  }
+  },
 ]
 
 /**

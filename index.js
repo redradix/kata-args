@@ -1,7 +1,11 @@
 const parseCommand = (schema, value) => {
-  if (value === '-b') throw new Error('Invalid Parameter');
+  const flag = value.split('-')[1];
   
-  return value ? { a: true } : {}
+  const firstSchemaKey = Object.keys(schema)[0];
+  
+  if (flag !== firstSchemaKey) throw new Error('Invalid Parameter');
+  
+  return value ? { [flag]: true } : {}
 }
 
 module.exports = { parseCommand }
