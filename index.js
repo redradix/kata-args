@@ -1,5 +1,5 @@
-const createParser = schema => args => {
-  args = args.split(' ')
+const createParser = schema => input => {
+  const args = input.split(' ')
 
   const allowedArgs = Object.keys(schema)
 
