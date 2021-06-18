@@ -119,7 +119,7 @@ describe('Validate Schema', () => {
   });
 
   error.forEach(({name, schema, value, result}) => {
-    it (name, () => {
+    it (`[ERROR] ${name}`, () => {
       expect(() => parseCommand(schema, value)).toThrowError(result)
     })
   })
