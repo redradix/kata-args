@@ -53,6 +53,14 @@ describe('Parsing basics', () => {
     expect(parseArgs('-p -d 100')).toEqual({ p: '', d: 100 })
   })
 
+  it('accepts fine multiple spaces', () => {
+    expect(parseArgs('-l  -p   8080    -d     100')).toEqual({
+      l: true,
+      p: '8080',
+      d: 100,
+    })
+  })
+
   it('fails when an arg is not recognized', () => {
     expect(() => parseArgs('-z')).toThrow()
     expect(() => parseArgs('-h')).toThrow()
