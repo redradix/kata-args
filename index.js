@@ -1,11 +1,14 @@
 const parseCommand = (schema, value) => {
-  const flag = value.split('-')[1];
-  
-  const firstSchemaKey = Object.keys(schema)[0];
-  
-  if (flag !== firstSchemaKey) throw new Error('Invalid Parameter');
-  
-  return value ? { [flag]: true } : {}
+  const flags = value.split('-').slice(1).map(value => value.trim());
+  const schemaKeys = Object.keys(schema);
+
+  return flags.reduce((acc, key) => {
+    if (schemaKeys.includes(key)) {
+      return { ...acc, [key]: true }
+    } else {
+      throw new Error('Invalid Parameter')
+    }
+  }, {})
 }
 
 module.exports = { parseCommand }

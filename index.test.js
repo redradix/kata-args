@@ -22,6 +22,25 @@ const specs = [
     },
     value: '-b',
     result: { b: true }
+  },
+  {
+    name: 'Schema with 2 boolean values "a" and "b"',
+    schema: {
+      a: "boolean",
+      b: 'boolean'
+    },
+    value: '-a -b',
+    result: { a: true, b: true }
+  },
+  {
+    name: 'Schema with 3 booleans in schema and 2 values "a" and "b"',
+    schema: {
+      a: 'boolean',
+      b: 'boolean',
+      c: 'boolean'
+    },
+    value: '-a -b',
+    result: { a: true, b: true }
   }
 ]
 
