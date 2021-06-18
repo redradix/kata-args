@@ -1,7 +1,15 @@
-const { bla } = require('./index.js')
+const { parseArguments } = require('./index.js')
 
-describe('Bla', () => {
-  it('fails', () => {
-    expect(1).toBe(2)
+describe('parseArguments', () => {
+  it('support parsing a single flag as `true`', () => {
+    const schema = {
+      p: 'boolean'
+    }
+
+    const input = '-p'
+
+    expect(parseArguments(schema, input)).toEqual({
+      p: true
+    })
   })
 })
