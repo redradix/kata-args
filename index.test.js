@@ -1,4 +1,10 @@
-const { parseArgs } = require('./index.js')
+const { createParser } = require('./index.js')
+
+const parseArgs = createParser({
+  l: 'boolean',
+  p: 'string',
+  d: 'number',
+})
 
 describe('Parser', () => {
   it('no params', () => {
