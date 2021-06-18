@@ -13,4 +13,8 @@ describe("Parser", () => {
     expect(parseArgs("-p 4000")).toEqual({ p: "4000" });
     expect(parseArgs("-p 8000")).toEqual({ p: "8000" });
   });
+
+  it("provides a default value if none is provided", () => {
+    expect(parseArgs("-p")).toEqual({ p: "" });
+  });
 });
