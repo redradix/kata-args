@@ -49,7 +49,7 @@ describe("parseArguments", () => {
     });
   });
 
-  it("support parsing any flag name`", () => {
+  it("support parsing any flag name for numbers", () => {
     const schema = {
       number: "number",
     };
@@ -58,6 +58,18 @@ describe("parseArguments", () => {
 
     expect(parseArguments(schema, input)).toEqual({
       number: 1337,
+    });
+  });
+
+  it("support parsing any name flag for booleans", () => {
+    const schema = {
+      boolean: "boolean",
+    };
+
+    const input = "-boolean";
+
+    expect(parseArguments(schema, input)).toEqual({
+      boolean: true,
     });
   });
 });

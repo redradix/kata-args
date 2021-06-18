@@ -1,11 +1,12 @@
 const parseArguments = (schema, input) => {
-  if (schema.p === "boolean") {
-    if (input.includes("-p")) return { p: true };
-    return { p: false };
+  const [flagWithMinus, valueString] = input.split(" ");
+  const flag = flagWithMinus.slice(1);
+
+  if (schema[flag] === "boolean") {
+    if (input.includes(flagWithMinus)) return { [flag]: true };
+    return { [flag]: false };
   } else {
-    const [flagWithMinus, numberString] = input.split(" ");
-    const flag = flagWithMinus.slice(1);
-    const number = parseInt(numberString, 10);
+    const number = parseInt(valueString, 10);
 
     return { [flag]: number };
   }
