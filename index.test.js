@@ -41,7 +41,15 @@ const specs = [
     },
     value: '-a -b',
     result: { a: true, b: true }
-  }
+  },
+  {
+    name: 'Schema with value string "a"',
+    schema: {
+      a: 'string'
+    },
+    value: '-a andres',
+    result: { a: 'andres' }
+  },
 ]
 
 const error = [

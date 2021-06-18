@@ -1,13 +1,21 @@
 const parseCommand = (schema, value) => {
-  const flags = value.split('-').slice(1).map(value => value.trim());
-  const schemaKeys = Object.keys(schema);
+  const params = value.split('-').slice(1).map(value => value.trim());
 
-  return flags.reduce((acc, key) => {
-    if (schemaKeys.includes(key)) {
-      return { ...acc, [key]: true }
-    } else {
+  return params.reduce((acc, param) => {
+    const [flag, value] = param.split(' ')
+    const type = schema[flag]
+
+    if (!type) {
       throw new Error('Invalid Parameter')
     }
+
+    if (type === 'boolean') {
+      return  { ...acc, [flag]: true }
+    } else if (type === 'string') {
+      return { ...acc, [flag]: value }
+    }
+
+    
   }, {})
 }
 
