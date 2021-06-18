@@ -1,7 +1,14 @@
-const { bla } = require('./index.js')
+const { parser } = require('./index.js')
+
+const schema = {
+  p: {
+    type: Number,
+    regex: null,
+  },
+}
 
 describe('Bla', () => {
   it('fails', () => {
-    expect(1).toBe(2)
+    expect(parser('-p 8080', schema)).toThrow(Error)
   })
 })

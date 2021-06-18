@@ -1,5 +1,5 @@
-const bla = () => {
-  console.log('bla')
-}
+const parser = () => {
+  console.log("bla");
+};
 
-module.exports = { bla }
+module.exports = { parser };
