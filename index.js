@@ -1,9 +1,9 @@
 const parseArgs = args => {
+  args = args.split(" ")
   const parser = {}
 
   if (args.includes('-d')) {
-    const auxArgs = args.split(" ")
-    let value = auxArgs[auxArgs.indexOf("-d") + 1]
+    let value = args[args.indexOf("-d") + 1]
     if(!value || value.startsWith('-')) {
       value = 0
     }
@@ -13,8 +13,7 @@ const parseArgs = args => {
    parser['l']= true
   }
   if (args.includes('-p')) {
-    const auxArgs = args.split(" ")
-    let value = auxArgs[auxArgs.indexOf("-p") + 1]
+    let value = args[args.indexOf("-p") + 1]
     if(!value || value.startsWith('-')) {
       value = ''
     }
