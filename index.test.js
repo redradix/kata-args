@@ -15,6 +15,18 @@ const specs = [
     value: '-a',
     result: { a: true }
   },
+  
+]
+
+const error = [
+  {
+    name: 'Boolean B',
+    schema: {
+      a: 'boolean'
+    },
+    value: '-b',
+    result: 'Invalid Parameter'
+  }
 ]
 
 /**
@@ -25,6 +37,12 @@ describe('Validate Schema', () => {
   specs.forEach(({name, schema, value, result}) => {
     it(name, () => {
       expect(parseCommand(schema, value)).toMatchObject(result)
+    })
+  });
+
+  error.forEach(({name, schema, value, result}) => {
+    it (name, () => {
+      expect(() => parseCommand(schema, value)).toThrowError(result)
     })
   })
 })
