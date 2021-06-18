@@ -1,10 +1,16 @@
 const schema = require('./schema')
 
-const parser = (params, schema) => {
-  console.log(params, schema)
-  throw new Error('hola')
+const parseArgs = str => {
+  const [arg, value] = str.split(' ')
+  console.log(arg, value)
 }
 
-// parser('-p 8080', schema)
+const parser = (params, schema) => {
+  parseArgs(params)
+  // console.log(params, schema)
+  // throw new Error('hola')
+}
+
+parser('-p 8080', schema)
 
 module.exports = { parser }
