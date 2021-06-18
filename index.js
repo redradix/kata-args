@@ -5,6 +5,16 @@ const parseArgs = str => {
   return [arg, value]
 }
 
+const x = string => {
+  const y = string.split(' ')
+  const result = y.map((v, i) => {
+    if (v.startsWith('-')) return [v]
+  })
+  console.log(result)
+}
+
+x('-l -p 8080 -x')
+
 const parser = (params, schema) => {
   const [arg, value] = parseArgs(params)
 
