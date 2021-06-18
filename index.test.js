@@ -22,4 +22,8 @@ describe('Parser', () => {
     expect(parseArgs('-l -p 8000')).toEqual({ l: true, p: '8000' })
     expect(parseArgs('-p 8000 -l')).toEqual({ l: true, p: '8000' })
   })
+
+  it('parses a flag without value and a flag with a default value', () => {
+    expect(parseArgs('-p -l')).toEqual({ l: true, p: '' })
+  })
 })
