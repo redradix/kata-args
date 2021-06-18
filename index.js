@@ -1,5 +1,5 @@
-const bla = () => {
-  console.log('bla')
+const parseCommand = (schema, value) => {
+  return value ? { a: true } : {}
 }
 
-module.exports = { bla }
+module.exports = { parseCommand }
