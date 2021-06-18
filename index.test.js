@@ -26,4 +26,8 @@ describe('Parser', () => {
   it('parses a flag without value and a flag with a default value', () => {
     expect(parseArgs('-p -l')).toEqual({ l: true, p: '' })
   })
+
+  it('parses numeric args', () => {
+    expect(parseArgs('-d 100')).toEqual({ d: 100 })
+  })
 })
