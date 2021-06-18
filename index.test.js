@@ -20,5 +20,6 @@ describe('Parser', () => {
 
   it('parses a flag without value and a flag with a value', () => {
     expect(parseArgs('-l -p 8000')).toEqual({ l: true, p: '8000' })
+    expect(parseArgs('-p 8000 -l')).toEqual({ l: true, p: '8000' })
   })
 })
