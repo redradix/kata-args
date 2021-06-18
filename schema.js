@@ -1,5 +1,5 @@
 const schema = {
-  p: {
+  '-p': {
     type: Number,
     regex: null,
   },
