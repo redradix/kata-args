@@ -30,4 +30,8 @@ describe('Parser', () => {
   it('parses numeric args', () => {
     expect(parseArgs('-d 100')).toEqual({ d: 100 })
   })
+
+  it('throws an exception when not allowed flag', () => {
+    expect(() => parseArgs('-z')).toThrow()
+  })
 })
