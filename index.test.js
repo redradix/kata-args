@@ -53,6 +53,15 @@ const error = [
     value: '-b',
     result: 'Invalid Parameter'
   },
+  {
+    name: 'Schema with wrong boolean',
+    schema: {
+      a: 'boolean',
+      b: 'boolean'
+    },
+    value: '-b -c',
+    result: 'Invalid Parameter'
+  },
 ]
 
 /**
