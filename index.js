@@ -3,7 +3,10 @@ const parseArguments = (schema, input) => {
     if (input.includes("-p")) return { p: true };
     return { p: false };
   } else {
-    return { p: 8080 };
+    const numberString = input.slice(3)
+    const number = parseInt(numberString, 10)
+
+    return { p: number };
   }
 };
 
