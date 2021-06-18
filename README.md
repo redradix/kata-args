@@ -1,4 +1,4 @@
-#About this Kata
+# About this Kata
 
 This Kata is presented in Robert C.. Martin's book "Clean Code", chapter 14.
 
