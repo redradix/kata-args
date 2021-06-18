@@ -40,4 +40,13 @@ describe('Parser', () => {
   it('throws an exception when not allowed flag', () => {
     expect(() => parseArgs('-z')).toThrow()
   })
+
+  it('can test any schema', () => {
+    const parser = createParser({
+      l: 'string',
+      p: 'number',
+      d: 'boolean',
+    })
+    expect(parser('-d -p 80 -l hola')).toEqual({ d: true, p: 80, l: 'hola' })
+  })
 })
