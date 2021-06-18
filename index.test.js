@@ -27,6 +27,7 @@ describe('Parsing basics', () => {
   it('parses a single numeric option', () => {
     expect(parseArgs('-d 100')).toEqual({ d: 100 })
     expect(parseArgs('-d 2000')).toEqual({ d: 2000 })
+    expect(parseArgs('-d -2')).toEqual({ d: -2 })
   })
 
   it('provides a default value for a single empty option', () => {
