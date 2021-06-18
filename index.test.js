@@ -70,6 +70,15 @@ const error = [
     value: '-b -c',
     result: 'Invalid Parameter'
   },
+  {
+    name: 'Schema with value string "a"',
+    schema: {
+      a: 'boolean',
+      f: 'boolean'
+    },
+    value: '-a andres -f',
+    result: 'Invalid schema type'
+  },
 ]
 
 /**

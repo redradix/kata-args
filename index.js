@@ -10,12 +10,14 @@ const parseCommand = (schema, value) => {
     }
 
     if (type === 'boolean') {
+      if (value) {
+        throw new Error('Invalid schema type')
+      }
+
       return  { ...acc, [flag]: true }
     } else if (type === 'string') {
       return { ...acc, [flag]: value }
-    }
-
-    
+    }    
   }, {})
 }
 
