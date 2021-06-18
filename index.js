@@ -29,9 +29,10 @@ const consumeArgs = (schema, args, result = {}) => {
       })
     }
     case 'number': {
-      const [value, ...nextArgsWithoutValue] = nextArgs
+      const [rawValue, ...nextArgsWithoutValue] = nextArgs
+      const value = Number(rawValue)
 
-      if (!value || value.startsWith('-')) {
+      if (!rawValue || isNaN(value)) {
         return consumeArgs(schema, nextArgs, {
           ...result,
           [option]: 0,
