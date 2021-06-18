@@ -5,8 +5,12 @@ const parseArgs = args => {
    parser['l']= true
   }
   if (args.includes('-p')) {
-    auxArgs = args.split(" ")
-    parser['p']=  auxArgs[auxArgs.indexOf("-p") + 1] || ""
+    const auxArgs = args.split(" ")
+    let value = auxArgs[auxArgs.indexOf("-p") + 1]
+    if(!value || value.startsWith('-')) {
+      value = ''
+    }
+    parser['p']=  value
   }
   return parser
 }
