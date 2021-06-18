@@ -1,15 +1,27 @@
-const { parseArguments } = require('./index.js')
+const { parseArguments } = require("./index.js");
 
-describe('parseArguments', () => {
-  it('support parsing a single flag as `true`', () => {
+describe("parseArguments", () => {
+  it("support parsing a single flag as `true`", () => {
     const schema = {
-      p: 'boolean'
-    }
+      p: "boolean",
+    };
 
-    const input = '-p'
+    const input = "-p";
 
     expect(parseArguments(schema, input)).toEqual({
-      p: true
-    })
-  })
-})
+      p: true,
+    });
+  });
+
+  it("support parsing a single flag as `false`", () => {
+    const schema = {
+      p: "boolean",
+    };
+
+    const input = "";
+
+    expect(parseArguments(schema, input)).toEqual({
+      p: false,
+    });
+  });
+});
