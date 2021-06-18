@@ -17,4 +17,8 @@ describe("Parser", () => {
   it("provides a default value if none is provided", () => {
     expect(parseArgs("-p")).toEqual({ p: "" });
   });
+
+  it("provides a default value if none is provided", () => {
+    expect(parseArgs("-l -p 8000")).toEqual({ l: true, p: "8000" });
+  });
 });
