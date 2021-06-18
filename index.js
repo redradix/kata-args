@@ -1,39 +1,57 @@
+const consumeArgs = (schema, args, result = {}) => {
+  if (!args || args.length === 0) return result
+
+  const [currentArg, ...nextArgs] = args
+  if (currentArg === '' && nextArgs.length === 0) return result
+
+  const option = currentArg.slice(1)
+
+  switch (schema[option]) {
+    case 'boolean': {
+      return consumeArgs(schema, nextArgs, {
+        ...result,
+        [option]: true,
+      })
+    }
+    case 'string': {
+      const [value, ...nextArgsWithoutValue] = nextArgs
+
+      if (!value || value.startsWith('-')) {
+        return consumeArgs(schema, nextArgs, {
+          ...result,
+          [option]: '',
+        })
+      }
+
+      return consumeArgs(schema, nextArgsWithoutValue, {
+        ...result,
+        [option]: value,
+      })
+    }
+    case 'number': {
+      const [value, ...nextArgsWithoutValue] = nextArgs
+
+      if (!value || value.startsWith('-')) {
+        return consumeArgs(schema, nextArgs, {
+          ...result,
+          [option]: 0,
+        })
+      }
+
+      return consumeArgs(schema, nextArgsWithoutValue, {
+        ...result,
+        [option]: Number(value),
+      })
+    }
+    default:
+      throw new Error(`Argument ${currentArg} is not supported`)
+  }
+}
+
 const createParser = schema => input => {
   const args = input.split(' ')
 
-  const parser = {}
-
-  args
-    .filter(arg => arg.startsWith('-'))
-    .map(arg => arg.slice(1))
-    .forEach(arg => {
-      switch (schema[arg]) {
-        case 'boolean': {
-          parser[arg] = true
-          break
-        }
-        case 'string': {
-          let value = args[args.indexOf(`-${arg}`) + 1]
-          if (!value || value.startsWith('-')) {
-            value = ''
-          }
-          parser[arg] = value
-          break
-        }
-        case 'number': {
-          let value = args[args.indexOf(`-${arg}`) + 1]
-          if (!value || value.startsWith('-')) {
-            value = 0
-          }
-          parser[arg] = Number(value)
-          break
-        }
-        default:
-          throw new Error()
-      }
-    })
-
-  return parser
+  return consumeArgs(schema, args)
 }
 
 module.exports = { createParser }
