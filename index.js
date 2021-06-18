@@ -50,7 +50,7 @@ const consumeArgs = (schema, args, result = {}) => {
 }
 
 const createParser = schema => input => {
-  const args = input.split(' ')
+  const args = input.split(/\s+/)
 
   return consumeArgs(schema, args)
 }
