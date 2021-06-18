@@ -1,7 +1,8 @@
-const { bla } = require('./index.js')
+const { parseArgs } = require('./index.js')
 
-describe('Bla', () => {
-  it('fails', () => {
-    expect(1).toBe(2)
+
+describe('Parser', () => {
+  it('no params', () => {
+    expect(parseArgs('')).toEqual({})
   })
 })
