@@ -24,4 +24,15 @@ describe("parseArguments", () => {
       p: false,
     });
   });
+  it("Support parsing a single numeric flag as `8080`",() => {
+    const schema = {
+      p: "number"
+    };
+
+    const input = "-p 8080";
+
+    expect(parseArguments(schema, input)).toEqual({
+      p: 8080,
+    })
+  })
 });
